@@ -1,0 +1,10 @@
+.idea/*
+!.idea/codeStyles/
+!.idea/checkstyle-idea.xml
+
+target/
+
+*.bak
+*.iml
+*.log
+*.class

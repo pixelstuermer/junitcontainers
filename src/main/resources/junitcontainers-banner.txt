@@ -1,0 +1,1 @@
+Using ${project.artifactId} with version ${project.version}: https://github.com/pixelstuermer/junitcontainers
