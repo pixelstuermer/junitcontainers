@@ -195,43 +195,6 @@
         </executions>
       </plugin>
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>license-maven-plugin</artifactId>
-        <version>${license-maven-plugin.version}</version>
-        <executions>
-          <execution>
-            <id>add-licenses</id>
-            <phase>process-sources</phase>
-            <goals>
-              <goal>add-third-party</goal>
-              <goal>update-file-header</goal>
-            </goals>
-          </execution>
-          <execution>
-            <id>remove-file-header</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>remove-file-header</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <failOnMissing>true</failOnMissing>
-          <failOnBlacklist>true</failOnBlacklist>
-          <licenseName>mit</licenseName>
-          <descriptionTemplate>${project.basedir}/licenseHeaderTemplate.ftl</descriptionTemplate>
-          <processStartTag>==========LICENSE-START==========</processStartTag>
-          <processEndTag>===========LICENSE-END===========</processEndTag>
-          <sectionDelimiter>=================================</sectionDelimiter>
-          <roots>
-            <root>${project.build.sourceDirectory}</root>
-          </roots>
-          <includes>
-            <include>**/*.java</include>
-          </includes>
-        </configuration>
-      </plugin>
-      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
         <version>${maven-checkstyle-plugin.version}</version>
@@ -294,18 +257,6 @@
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <version>${maven-source-plugin.version}</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>${maven-surefire-plugin.version}</version>
       </plugin>
@@ -332,4 +283,63 @@
       </plugin>
     </plugins>
   </build>
+
+  <profiles>
+    <profile>
+      <id>release</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>license-maven-plugin</artifactId>
+            <version>${license-maven-plugin.version}</version>
+            <executions>
+              <execution>
+                <id>add-licenses</id>
+                <phase>process-sources</phase>
+                <goals>
+                  <goal>add-third-party</goal>
+                  <goal>update-file-header</goal>
+                </goals>
+              </execution>
+              <execution>
+                <id>remove-file-header</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>remove-file-header</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <failOnMissing>true</failOnMissing>
+              <failOnBlacklist>true</failOnBlacklist>
+              <licenseName>mit</licenseName>
+              <descriptionTemplate>${project.basedir}/licenseHeaderTemplate.ftl</descriptionTemplate>
+              <processStartTag>==========LICENSE-START==========</processStartTag>
+              <processEndTag>===========LICENSE-END===========</processEndTag>
+              <sectionDelimiter>=================================</sectionDelimiter>
+              <roots>
+                <root>${project.build.sourceDirectory}</root>
+              </roots>
+              <includes>
+                <include>**/*.java</include>
+              </includes>
+            </configuration>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <version>${maven-source-plugin.version}</version>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
