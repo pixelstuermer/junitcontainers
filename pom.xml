@@ -59,6 +59,7 @@
     <project.build.resourcesDirectory>${project.basedir}/src/main/resources</project.build.resourcesDirectory>
 
     <!-- Library versions -->
+    <testcontainers.version>1.15.1</testcontainers.version>
     <lombok.version>1.18.16</lombok.version>
     <slf4j-api.version>1.7.29</slf4j-api.version>
     <commons-io.version>2.8.0</commons-io.version>
@@ -82,6 +83,18 @@
   </properties>
 
   <dependencies>
+    <dependency>
+      <groupId>org.testcontainers</groupId>
+      <artifactId>testcontainers</artifactId>
+      <version>${testcontainers.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.testcontainers</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>${testcontainers.version}</version>
+      <scope>provided</scope>
+    </dependency>
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
