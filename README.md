@@ -36,14 +36,14 @@ Tbd.
 
 ## Compatibility with Testcontainers and JUnit
 
-Tbd. 
+Tbd.
 
 ## Credits And Related
 
 - [Testcontainers](https://www.testcontainers.org/)
 - Google [Codestyle](https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml)
 - Google [Checkstyle](https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_checks.xml)
-       
+
 ## License
 
 [MIT](LICENSE)
